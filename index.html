@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aplikasi Web Sederhana</title>
+    <style>
+        /* CSS untuk styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .hamburger {
+            display: none; /* Sembunyikan tombol hamburger di layar besar */
+            cursor: pointer;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+
+        /* Media Queries untuk Responsif */
+        @media (max-width: 768px) {
+            .menu {
+                display: none; /* Menyembunyikan menu di layar kecil */
+                flex-direction: column; /* Menu vertikal */
+                background-color: #4CAF50; /* Warna latar belakang menu */
+                position: absolute; /* Posisi absolut untuk menu dropdown */
+                top: 50px; /* Jarak dari atas */
+                left: 0; 
+                width: 100%; /* Lebar penuh */
+                z-index: 1000; /* Di atas konten lain */
+            }
+
+            .menu li {
+                display: block; /* Menampilkan item menu dalam baris baru */
+                margin-right: 0; /* Menghilangkan margin kanan */
+                text-align: center; /* Rata tengah */
+            }
+
+            .hamburger {
+                display: block; /* Menampilkan tombol hamburger di layar kecil */
+                font-size: 24px; /* Ukuran font besar untuk tombol */
+                cursor: pointer; /* Menunjukkan bahwa ini dapat diklik */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Aplikasi Web Kami</h1>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="home">
+            <h2>Home</h2>
+            <p>Ini adalah halaman utama aplikasi web kami.</p>
+        </section>
+
+        <section id="about">
+            <h2>Tentang Kami</h2>
+            <p>Kami adalah perusahaan yang menyediakan solusi terbaik untuk kebutuhan Anda.</p>
+        </section>
+
+        <section id="services">
+            <h2>Servis Kami</h2>
+            <ul>
+                <li>Servis 1: Deskripsi singkat tentang servis ini.</li>
+                <li>Servis 2: Deskripsi singkat tentang servis ini.</li>
+                <li>Servis 3: Deskripsi singkat tentang servis ini.</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Kontak Kami</h2>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <label for="name">Nama:</label><br>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="message">Pesan:</label><br>
+                <textarea id="message" name="message" required></textarea><br>
+
+                <input type="submit" value="Kirim">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aplikasi Web Kami. Semua hak dilindungi.</p>
+    </footer>
+
+    <!-- JavaScript untuk interaksi -->
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            
+            // Toggle tampilan menu
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Mencegah pengiriman form default
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Terima kasih, ${name}! Pesan Anda telah dikirim.`);
+            
+            // Reset form setelah pengiriman
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
